@@ -1,8 +1,14 @@
+@font-face {
+    font-family: "Outfit Regular";
+    src: url("/assets/fonts/Outfit-Regular.ttf") format("truetype");
+}
+
 :root {
     --white: #f0f0f0;
     --black: #1e1e1e;
     --light-grey: #c2c2c2;
     --dark-grey: #333;
+    --dark-grey-acc: #666;
     --green-300: #3b7549;
     --green-400: #428151;
     --green-acc: #2d9748;
@@ -12,6 +18,8 @@
 
     --text-dark: var(--dark-grey);
     --text-light: var(--light-grey);
+
+    --font-regular: "Outfit Regular", sans-serif;
 }
 
 /* --- Reset & General Styles --- */
@@ -22,8 +30,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        sans-serif;
+    font-family: var(--font-regular);
     background-color: var(--white);
     color: var(--text-dark);
     display: flex;
@@ -40,7 +47,7 @@ header {
     top: 0;
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 0.5rem;
     z-index: 1;
@@ -60,6 +67,55 @@ header {
     color: var(--light-bg);
     background-color: var(--green-400);
     border-radius: 5px;
+}
+
+/* --- Language Menu --- */
+#lang-menu {
+    position: absolute;
+    top: 3rem;
+    left: 1rem;
+    list-style: none;
+    padding: 0.5rem 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+}
+
+#lang-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    animation: popIn 0.25s ease forwards;
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+#lang-menu li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* space between emoji and text */
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: background 0.2s ease;
+}
+
+#lang-menu li:hover {
+    color: var(--text-light);
+    background-color: var(--dark-grey);
 }
 
 /* --- Main Container --- */
@@ -216,6 +272,15 @@ body.dark-theme .links svg {
 }
 body.dark-theme .links svg:hover {
     fill: var(--green-400);
+}
+
+body.dark-theme #lang-menu li {
+    color: var(--text-light);
+}
+
+body.dark-theme #lang-menu li:hover {
+    color: var(--text-dark);
+    background-color: var(--light-grey);
 }
 
 /* --- THEME TRANSITION --- */

@@ -1,0 +1,9 @@
+{
+    "start-desc": "Find the different color!",
+    "start-btn": "Start",
+    "score-g": "Score: ",
+    "timer-g": "Time: ",
+    "game-over": "Game Over",
+    "go-desc": "Your final score is:",
+    "retry-btn": "Retry"
+}
