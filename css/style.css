@@ -188,6 +188,10 @@ body.dark-theme h1 {
     color: var(--white);
 }
 
+body.dark-theme button {
+    color: var(--dark-grey);
+}
+
 body.dark-theme .game-container {
     background-color: var(--dark-grey);
 }
@@ -217,6 +221,7 @@ body.dark-theme .links svg:hover {
 /* --- THEME TRANSITION --- */
 body,
 h1,
+button,
 .game-container,
 .game-header,
 .theme-toggle,
