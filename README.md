@@ -7,7 +7,7 @@ A fun and simple javascript game where the player guesses the different colour a
 | ![Light](/assets/light.png) | ![Dark](/assets/dark.png) |
 
 <p align="center">
-   <a href=""> Play the game here! </a>
+   <a href="https://colorgame.egenesio.com/"> Play the game here! </a>
 </p>
 
 ## 🚀 Features
