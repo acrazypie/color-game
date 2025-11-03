@@ -50,8 +50,9 @@ color‑game/
 ├── index.html       # Main HTML page  
 ├── style.css        # Styling for the game  
 ├── lang.json        # JSON file for language strings (en, it, fr, de, es,  ja)
+├── css/              # CSS folder 
 ├── js/              # JavaScript folder  
-│   └── (game logic, theme and language switcher)  
+│   └── (game logic, theme and language switcher) 
 └── icons/           # Icons
 ```    
 
