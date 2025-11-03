@@ -249,7 +249,8 @@ body.dark-theme button {
 }
 
 body.dark-theme .game-container {
-    background-color: var(--dark-grey);
+    background-color: var(--dark-bg);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1);
 }
 
 body.dark-theme .theme-toggle {

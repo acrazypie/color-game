@@ -34,28 +34,34 @@ function showScreen(screenId) {
 function generateLevel(level) {
     gridContainer.innerHTML = "";
 
-    const gridSize = Math.min(Math.floor(level / 2) + 2, 7);
+    // Stepwise grid sizes: 2x2, 4x4, 6x6, 8x8
+    const gridSizes = [2, 4, 6, 8];
+    const gridSize =
+        gridSizes[Math.min(Math.floor(level / 2), gridSizes.length - 1)];
     const totalItems = gridSize * gridSize;
 
     gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
     gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
 
-    const colorDelta = Math.max(10, 80 - level * 3);
+    // Pastel colors: high RGB values with small variations
+    const maxDelta = 40; // max difference for the odd tile
+    const colorDelta = Math.max(10, Math.min(maxDelta, 50 - level)); // capped and min delta
 
-    const baseR = Math.floor(Math.random() * (256 - colorDelta));
-    const baseG = Math.floor(Math.random() * (256 - colorDelta));
-    const baseB = Math.floor(Math.random() * (256 - colorDelta));
+    function randomPastel() {
+        const r = Math.floor(Math.random() * 128 + 127);
+        const g = Math.floor(Math.random() * 128 + 127);
+        const b = Math.floor(Math.random() * 128 + 127);
+
+        return [r, g, b];
+    }
+
+    const [baseR, baseG, baseB] = randomPastel();
     const baseColor = `rgb(${baseR}, ${baseG}, ${baseB})`;
 
-    let oddR = baseR,
-        oddG = baseG,
-        oddB = baseB;
-    const channelToChange = Math.floor(Math.random() * 3); // 0=R, 1=G, 2=B
-
-    if (channelToChange === 0) oddR += colorDelta;
-    else if (channelToChange === 1) oddG += colorDelta;
-    else oddB += colorDelta;
-
+    // Slightly lighter odd tile
+    const oddR = Math.min(baseR + colorDelta, 255);
+    const oddG = Math.min(baseG + colorDelta, 255);
+    const oddB = Math.min(baseB + colorDelta, 255);
     const oddColor = `rgb(${oddR}, ${oddG}, ${oddB})`;
 
     const oddItemIndex = Math.floor(Math.random() * totalItems);
@@ -63,7 +69,6 @@ function generateLevel(level) {
     for (let i = 0; i < totalItems; i++) {
         const item = document.createElement("div");
         item.classList.add("grid-item");
-
         item.style.borderRadius = "8px";
 
         if (i === oddItemIndex) {
