@@ -1,0 +1,226 @@
+:root {
+    --white: #f0f0f0;
+    --black: #1e1e1e;
+    --light-grey: #c2c2c2;
+    --dark-grey: #333;
+    --green-300: #3b7549;
+    --green-400: #428151;
+    --green-acc: #2d9748;
+
+    --light-bg: var(--white);
+    --dark-bg: var(--black);
+
+    --text-dark: var(--dark-grey);
+    --text-light: var(--light-grey);
+}
+
+/* --- Reset & General Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        sans-serif;
+    background-color: var(--white);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
+
+/* --- Header --- */
+header {
+    padding: 20px 20px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    z-index: 1;
+}
+
+.theme-toggle {
+    padding: 0.5rem 0.5rem;
+    color: var(--dark-grey);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.theme-toggle:disabled {
+    opacity: 0.7;
+}
+.theme-toggle.selected {
+    color: var(--light-bg);
+    background-color: var(--green-400);
+    border-radius: 5px;
+}
+
+/* --- Main Container --- */
+.game-container {
+    width: 90dvw;
+    max-width: 450px;
+    background-color: var(--light-bg);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Screens Management --- */
+.screen {
+    display: none;
+    text-align: center;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* --- Elements --- */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--dark-grey);
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.button {
+    background-color: var(--green-300);
+    color: var(--light-bg);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.button:hover {
+    background-color: var(--green-acc);
+}
+
+/* --- Game Screen --- */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--dark-grey);
+}
+
+#grid-container {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: var(--light-bg);
+    border-radius: 10px;
+    padding: 8px;
+}
+
+/* --- JS created cirles --- */
+.grid-item {
+    width: 100%;
+    height: 100%;
+    /* JS sets border-radius */
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+.grid-item:active {
+    transform: scale(0.95);
+}
+
+/* --- Game Over Screen --- */
+#game-over-screen h2 {
+    font-size: 3.5rem;
+    color: var(--green-acc);
+    margin: 15px 0 25px;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 20px 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    z-index: 1;
+}
+
+.links {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    justify-content: center;
+}
+.links svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--dark-grey);
+}
+.links a:hover svg {
+    fill: var(--green-acc);
+    transition: fill 0.3s ease;
+    scale: 110%;
+}
+
+/* --- DARK THEME --- */
+body.dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--light-grey);
+}
+body.dark-theme h1 {
+    color: var(--white);
+}
+
+body.dark-theme .game-container {
+    background-color: var(--dark-grey);
+}
+
+body.dark-theme .theme-toggle {
+    color: var(--light-grey);
+}
+body.dark-theme .theme-toggle.selected {
+    color: var(--dark-bg);
+}
+
+body.dark-theme .game-header {
+    color: var(--light-grey);
+}
+
+body.dark-theme #grid-container {
+    background-color: var(--dark-bg);
+}
+
+body.dark-theme .links svg {
+    fill: var(--light-grey);
+}
+body.dark-theme .links svg:hover {
+    fill: var(--green-400);
+}
+
+/* --- THEME TRANSITION --- */
+body,
+h1,
+.game-container,
+.game-header,
+.theme-toggle,
+#grid-container,
+.links svg {
+    transition: background-color 0.4s ease, color 0.4s ease, fill 0.4s ease;
+}
