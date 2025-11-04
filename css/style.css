@@ -5,7 +5,7 @@
 
 :root {
     --white: #f0f0f0;
-    --black: #1e1e1e;
+    --black: #0d100e;
     --light-grey: #c2c2c2;
     --dark-grey: #333;
     --dark-grey-acc: #666;
@@ -16,8 +16,8 @@
     --light-bg: var(--white);
     --dark-bg: var(--black);
 
-    --text-dark: var(--dark-grey);
-    --text-light: var(--light-grey);
+    --text-dark: var(--black);
+    --text-light: var(--white);
 
     --font-regular: "Outfit Regular", sans-serif;
 }
@@ -90,6 +90,9 @@ header {
     pointer-events: auto;
     animation: popIn 0.25s ease forwards;
 }
+#lang-menu.hidden {
+    animation: popIn 0.25s ease backwards;
+}
 
 @keyframes popIn {
     0% {
@@ -152,7 +155,7 @@ p {
 
 .button {
     background-color: var(--green-300);
-    color: var(--light-bg);
+    color: var(--text-light);
     border: none;
     padding: 12px 25px;
     border-radius: 8px;
@@ -218,6 +221,11 @@ footer {
     z-index: 1;
 }
 
+footer p {
+    margin-bottom: 0;
+    align-self: center;
+}
+
 .links {
     display: flex;
     gap: 1rem;
@@ -245,7 +253,7 @@ body.dark-theme h1 {
 }
 
 body.dark-theme button {
-    color: var(--dark-grey);
+    color: var(--text-dark);
 }
 
 body.dark-theme .game-container {
