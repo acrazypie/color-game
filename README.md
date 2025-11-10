@@ -59,15 +59,18 @@ Then open `http://localhost:8080/index.html` in your browser.
 ## 📦 Project Structure
 
 ```
-color‑game/
+color-game/
 │
-├── index.html       # Main HTML page
-├── style.css        # Styling for the game
-├── lang.json        # JSON file for language strings (en, it, fr, de, es,  ja)
-├── css/             # CSS folder
-├── js/              # JavaScript folder
-│   └── (game logic, theme and language switcher)
-└── icons/           # Icons
+├── index.html           # Main HTML file (entry point)
+├── CNAME                # Custom domain configuration
+├── LICENSE              # MIT license file
+├── README.md            # Repository documentation
+├── assets/              # Game assets (images, visuals, etc.)
+├── css/                 # Additional CSS files
+├── fonts/               # Custom fonts used in the game
+├── icons/               # UI icons and favicon
+├── js/                  # JavaScript files (game logic, difficulty, language switch)
+└── lang/                # Language files for multilingual support
 ```
 
 ## 📄 License
